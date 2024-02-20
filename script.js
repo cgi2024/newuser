@@ -12,7 +12,7 @@ function updateContent() {
     })
     .then(response => response.json())
     .then(data => {
-        const currentContent = atob(data.content);
+        const currentContent = decodeURIComponent(escape(atob(data.content))); // 修改这一行
         const currentSha = data.sha;
 
         // 追加新内容
@@ -26,7 +26,7 @@ function updateContent() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                content: btoa(updatedContent),
+                content: btoa(unescape(encodeURIComponent(updatedContent))), // 修改这一行
                 encoding: 'base64',
             }),
         })
@@ -38,7 +38,7 @@ function updateContent() {
             fetch('https://api.github.com/repos/cgi2024/it/git/trees', {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer YOUR_PERSONAL_ACCESS_TOKEN',
+                    'Authorization': 'Bearer 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',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
@@ -61,7 +61,7 @@ function updateContent() {
                 fetch('https://api.github.com/repos/cgi2024/it/git/commits', {
                     method: 'POST',
                     headers: {
-                        'Authorization': 'Bearer YOUR_PERSONAL_ACCESS_TOKEN',
+                        'Authorization': 'Bearer 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',
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
@@ -78,7 +78,7 @@ function updateContent() {
                     fetch('https://api.github.com/repos/cgi2024/it/git/refs/heads/main', {
                         method: 'PATCH',
                         headers: {
-                            'Authorization': 'Bearer YOUR_PERSONAL_ACCESS_TOKEN',
+                            'Authorization': 'Bearer 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',
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
