@@ -22,7 +22,7 @@ function updateContent() {
         fetch('https://api.github.com/repos/cgi2024/it/git/blobs', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer YOUR_PERSONAL_ACCESS_TOKEN',
+                'Authorization': 'Bearer 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',
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
