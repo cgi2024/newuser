@@ -18,7 +18,7 @@ function updateContent() {
         const updatedContent = currentContent + '\n' + newContent;
 
         // 使用 GitHub API 更新 it.txt 文件内容
-        fetch('https://api.github.com/repos/cgi2024/it/contents/it.txt', {
+        fetch('https://api.github.com/repos/cgi2024/it/git/it.txt', {
             method: 'PUT',
             headers: {
                 'Authorization': 'Bearer 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',
